@@ -1,0 +1,7 @@
+controller\ManagerController.class
+service\ManagerService.class
+dao\ManagerDao.class
+pojo\House.class
+serviceImpl\ManagerServiceImpl.class
+pojo\Renter.class
+pojo\Manager.class

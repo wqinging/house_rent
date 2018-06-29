@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ManagerDao">
+	<resultMap type="pojo.House" id="getHouse">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="address" column="address" />
+		<result property="huxing" column="huxing" />
+		<result property="area" column="area" />
+		<result property="floor" column="floor" />
+		<result property="chaoxiang" column="chaoxiang" />
+		<result property="payway" column="payway" />
+		<result property="descoration" column="descoration" />
+		<result property="subway" column="subway" />
+		<result property="renter" column="renter" />
+		<result property="rentStartTime" column="rent_start_time" />
+		<result property="rentEndTime" column="rent_end_time" />
+	</resultMap>
+	<resultMap type="pojo.Manager" id="getManager">
+		<id property="managerId" column="manager_id" />
+		<result property="managerName" column="manager_name" />
+		<result property="managerPassword" column="manager_password" />
+		<result property="phoneNumber" column="phome_number" />
+	</resultMap>
+	<resultMap type="pojo.Renter" id="getRenter">
+		<id property="renterId" column="renter_id" />
+		<result property="renterName" column="renter_name" />
+		<result property="renterPnumber" column="renter_pnumber" />
+		<result property="idCard" column="id_card" />
+	</resultMap>
+	
+	<insert id="insertManager" parameterType="pojo.Manager">
+		insert into
+		manager(manager_name,manager_password,phone_number)
+		values(#{manager.managerName},#{manager.managerPassword},#{manager.phoneNumber})
+	</insert>
+	
+	<select id="selectManager" parameterType="pojo.Manager" resultMap="getManager">
+		select * from manager
+		where manager_name = #{managerName} and
+		manager_password =
+		#{manager.managerPassword}
+	</select>
+	
+	<select id="selectAllHoues" resultMap="getHouse">
+		select * from house
+	</select>
+	
+	<select id="selectHouses" parameterMap="String" resultMap="getHouse">
+		select * from house where name = #{houseName}
+	</select>
+	
+	<select id="selectHousesByIsRenterExists" resultMap="getHouse">
+		select * from house where renter is not null
+	</select>
+
+	<select id="selectHouseByRenterName" parameterMap="pojo.Renter"
+		resultMap="getHouse">
+		select * from house where renter = #{renterName}
+	</select>
+	
+	<select id="selectRenterByName" parameterMap="String" resultMap="getRenter">
+		select * from renter where renter_name = #{renterName}
+	</select>
+
+</mapper>

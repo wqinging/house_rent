@@ -1,0 +1,156 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-image:url(../imgs/bg3.jpg);
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+}
+
+.header {
+	display: flex;
+	justify-content:space-between;
+	align-items: center;
+	padding: 8px 32px;
+	background-color: rgba(255, 255, 255, 1);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.header button {
+    display: inline-block;
+    text-align: center;
+    padding: 8px 16px;
+    border: 0px;
+    color: #ffffff;
+    background-color: #0084ff;
+    border: 1px solid #0084ff;
+}
+
+.group1 {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	padding-top: 80px;
+	padding-right: 80px;
+}
+.group2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding-top: 80px;
+	padding-right: 80px;
+}
+
+.loginform {
+	background-color: rgba(255, 255, 255, 1);
+	width: 400px;
+	padding: 10px;
+	border-radius: 2px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.registerform {
+	background-color: rgba(255, 255, 255, 1);
+	width: 600px;
+	padding: 10px;
+	border-radius: 2px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.header-item {
+	padding-bottom: 8px;
+	border-bottom: 1px solid #b2b2b2; 
+	margin-bottom: 16px;
+}
+
+.group1 .input-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: row;
+	margin-top: 16px;
+	
+}
+.group2 .input-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: row;
+	margin-top: 16px;
+	margin-left: 88px;
+	
+}
+
+.input-item span {
+	font-size: 18px;
+    margin-right: 15px;
+}
+
+.group1 .input-item input {
+    display: block;
+    flex: 1;
+    height: 40px;
+    padding: 8px 8px;
+    border: 1px solid #e7e7e7;
+}
+
+.group2 .input-item input {
+    display: block;
+    flex: 0;
+    height: 30px;
+    padding: 8px 14px;
+    border: 1px solid #e7e7e7;
+}
+
+.p-item{
+	border:1px solid red;
+	color:red;
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+}
+
+.group1 .button-item input {
+    margin-top: 16px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 8px 16px;
+    border: 0px;
+    color: #ffffff;
+    background-color: #0084ff;
+    border: 1px solid #0084ff;
+}
+.group2 .button-item input {
+    margin-top: 16px;
+    width: 60%;
+    display: block;
+    text-align: center;
+    padding: 8px 20px;
+    border: 0px;
+    color: #ffffff;
+    background-color: #0084ff;
+    border: 1px solid #0084ff;
+}
+.group2 .button-item{
+	display: flex;
+	justify-content:center;
+}
+
+
+
+
+#register {
+	display: none;
+}
+
+#signup {
+	display: none;
+}
+
+#footer {
+	text-align: center;
+}

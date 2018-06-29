@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ManagerDao">
+	<resultMap type="pojo.House" id="getHouse">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="price" column="price" />
+		<result property="address" column="address" />
+		<result property="huxing" column="huxing" />
+		<result property="area" column="area" />
+		<result property="floor" column="floor" />
+		<result property="chaoxiang" column="chaoxiang" />
+		<result property="payway" column="payway" />
+		<result property="descoration" column="descoration" />
+		<result property="subway" column="subway" />
+		<result property="renter" column="renter" />
+		<result property="rentStartTime" column="rent_start_time" />
+		<result property="rentEndTime" column="rent_end_time" />
+		<result property="image" column="image" />
+	</resultMap>
+	<resultMap type="pojo.Manager" id="getManager">
+		<id property="managerId" column="manager_id" />
+		<result property="managerName" column="manager_name" />
+		<result property="managerPassword" column="manager_password" />
+		<result property="phoneNumber" column="phone_number" />
+	</resultMap>
+
+	<resultMap type="pojo.Renter" id="getRenter">
+		<id property="rentId" column="renter_id" />
+		<result property="renterName" column="renter_name" />
+		<result property="rentPnumber" column="renter_pnumber" />
+		<result property="idCard" column="id_card" />
+		<result property="houseId" column="house_id" />
+	</resultMap>
+
+
+
+	<insert id="insertManager" parameterType="pojo.Manager">
+		insert into
+		manager(manager_name,manager_password,phone_number)
+		values(#{manager.managerName},#{manager.managerPassword},#{manager.phoneNumber})
+	</insert>
+
+	<select id="selectManager" resultMap="getManager">
+		select * from manager
+		where
+		manager_name = #{managerName} and
+		manager_password =
+		#{managerPassword}
+	</select>
+
+	<select id="countHouses" resultType="int">
+		select count(*) from house
+		<if test="renter != null and renter !=''">
+			<choose>
+				<when test="rent_start_time != null and rent_start_time !=''">
+					where renter is not null
+				</when>
+
+				<otherwise>
+					where renter is null
+				</otherwise>
+
+			</choose>
+		</if>
+	</select>
+
+	<select id="selectAllHoues" resultMap="getHouse">
+		select * from house
+		<if test="renter != null  and renter !=''">
+			<choose>
+				<when test="rent_start_time != null and rent_start_time !=null">
+					where renter is not null
+				</when>
+				<otherwise>
+					where renter is null
+				</otherwise>
+			</choose>
+		</if>
+	</select>
+
+	<select id="paging" resultMap="getHouse">
+		select * from house
+		<if test="renter != null and renter !=''">
+			<choose>
+				<when test="rent_start_time != null and rent_start_time != ''">
+					where renter is not null
+				</when>
+
+				<otherwise>
+					where renter is null
+				</otherwise>
+
+			</choose>
+		</if>
+		limit #{start},#{size}
+	</select>
+
+	<select id="selectHouses" parameterType="String" resultMap="getHouse">
+		select * from house where name like concat('%',#{houseName},'%') 
+	</select>
+	<select id="selectHouseByRenterName" parameterType="pojo.Renter"
+		resultMap="getHouse">
+		select * from house where renter = #{renterName}
+	</select>
+
+	<select id="selectRenterByName" parameterType="String"
+		resultMap="getRenter">
+		select * from renter where renter_name = #{renterName}
+	</select>
+
+	<update id="updateHouseInfo" parameterType="pojo.House">
+		UPDATE house SET name
+		= #{house.name},price = #{house.price}, address =
+		#{house.address},huxing = #{house.huxing},
+		area = #{house.area},floor =
+		#{house.floor},chaoxiang =
+		#{house.chaoxiang}, payway =
+		#{house.payway},
+		descoration = #{house.descoration}, subway =
+		#{house.subway},renter =
+		#{house.renter},
+		rent_start_time =
+		#{house.rentStartTime},rent_end_time= #{house.rentEndTime},
+		image =
+		#{house.image}
+		WHERE id = #{house.id};
+	</update>
+
+	<select id="selectAllRenter" resultMap="getRenter">
+		select * from renter;
+	</select>
+
+
+	<insert id="insertRenter" parameterType="pojo.Renter">
+		insert into renter(renter_name,renter_pnumber,id_card)
+		values(#{renter.renterName},#{renter.rentPnumber},#{renter.idCard})
+	</insert>
+
+	<insert id="insertHouseInfo" parameterType="pojo.House">
+		insert into
+		house(name,price,address,huxing,area,floor,chaoxiang,descoration,subway,image)
+		values(#{house.name},#{house.price},#{house.address},#{house.huxing},
+		#{house.area},#{house.floor},#{house.chaoxiang},
+		#{house.descoration},#{house.subway},#{house.image}
+		)
+	</insert>
+
+	<delete id="deleteHouse" parameterType="String">
+		delete from house where name = #{name}
+	</delete>
+
+	<delete id="deleteRenter" parameterType="String">
+		delete from renter where renter_name = #{name}
+	</delete>
+
+	<update id="updateHouseIdByrenterName">
+		update renter set house_id = #{houseId} where renter_name = #{renterName}
+	</update>
+
+	<update id="updateRenterByHouseId">
+		update house set renter = #{renterName} where id = #{houseId};
+	</update>
+
+	<update id="updateHouseInfoNotRenter" parameterType="pojo.House">
+		UPDATE house
+		SET name = #{house.name},price = #{house.price},
+		address =
+		#{house.address},huxing = #{house.huxing},
+		area = #{house.area},floor =
+		#{house.floor},chaoxiang =
+		#{house.chaoxiang}, payway =
+		#{house.payway},
+		descoration = #{house.descoration},
+		subway=#{house.subway},image =#{house.image}
+		WHERE id = #{house.id}
+	</update>
+
+	<update id="updateRenter" parameterType="pojo.Renter">
+		update renter set renter_pnumber=#{renter.rentPnumber},house_id = #{renter.houseId} where renter_id = #{renter.rentId}
+	</update>
+
+</mapper>

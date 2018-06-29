@@ -1,0 +1,5 @@
+#Mysql
+jdbc.Driver = com.mysql.jdbc.Driver
+jdbc.url = jdbc:mysql://localhost:3306/housemessages?useSSL=false&serverTimezone = GTC
+jdbc.username = root
+jdbc.password = root

@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+* {
+	padding: 0;
+	margin: 0 auto;
+}
+body {
+	background-color: #F1F1F1;
+}
+#top {
+	width: 1080px;
+	border: 1px solid #EBEBEB;
+	background-color: #FCFCFC;
+}
+#top h1 {
+	margin: 30px 40px;
+	display: inline-block;
+}
+#top input[type="button"] {
+	background-color: #39AC6A;
+	font-size: 15px;
+	color: white;
+	width: 98px;
+	height: 34px;
+	margin-left: 300px;
+}
+#buttom {
+	background-color: #FFFFFF;
+	width: 1080px;
+	border: 1px solid #EBEBEB;
+}
+#buttom_left .imgContaner img {
+	width: 400px;
+	height: 325px;
+}
+#buttom_left .imgContaner {
+	margin: 0 30px;
+}
+#buttom_left {
+	display: inline-block;
+}
+#buttom_middle {
+	display: inline-block;
+	margin-right:20px;
+}
+#buttom_middle .messages-middle{
+	display: inline-block;
+}
+#buttom_middle .messages-right{
+	display: inline-block;
+}
+#buttom_middle .messages-middle p {
+	font-size: 20px;
+}
+#buttom_middle .messages-middle p input{
+	width:150px;
+	height:21px;
+}

@@ -1,0 +1,38 @@
+#top {
+	margin: 0;
+	width: 1080px;
+	height: 35px;
+	border: 1px solid #EBEBEB;
+	background-color: #FCFCFC;
+}
+
+#top h1 {
+	matgin: 5px 30px;
+	font-size: 20px;
+	display: inline-block;
+}
+
+tr {
+	display: block;
+	margin: 0px 0px 16px 0px;
+}
+
+tr td input {
+	display: inline-block;
+	margin-left: 8px;
+	border: 0;
+	border-bottom: 1px solid;
+	width:248px;
+}
+
+.button {
+	width: 120px;
+	border: 1px solid;
+	width:248px;
+}
+
+.sum{
+	    padding-left: 24px;
+}
+}
+
